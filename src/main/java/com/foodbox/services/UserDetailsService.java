@@ -15,8 +15,7 @@ public class UserDetailsService {
 	private UserDetailsDAO userDetailsDAO;
 
 	public Boolean addUserDetails(UserDetails userDetails) {
-		userDetailsDAO.addUserDetails(userDetails);
-		return true;
+		return userDetailsDAO.addUserDetails(userDetails);
 	}
 
 	public Boolean validateUser(UserDetails userDetails) {

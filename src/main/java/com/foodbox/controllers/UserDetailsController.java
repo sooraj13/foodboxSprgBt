@@ -60,6 +60,7 @@ public class UserDetailsController {
 	}
 	
 	@PostMapping("/frgtPswrd")
+	@CrossOrigin
 	public Response updatePassword(@RequestBody UserDetails userDetails) {
 		Response resp = new Response();
 		resp.setCode("100");

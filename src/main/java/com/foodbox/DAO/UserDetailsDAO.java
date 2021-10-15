@@ -15,8 +15,16 @@ public class UserDetailsDAO {
 	@Autowired
 	private UserDetailsRep userDetailsRep;
 
-	public void addUserDetails(UserDetails userDetails) {
+	public boolean addUserDetails(UserDetails userDetails) {
+		try {
 		userDetailsRep.save(userDetails);
+		return true;
+		}
+		catch(Exception e) {
+			System.out.println("exception : " + e);
+			return false;
+			
+		}
 	}
 
 	public Boolean validateUser(UserDetails userDetails) {
@@ -28,11 +36,16 @@ public class UserDetailsDAO {
 	}
 
 	public Boolean updatePassword(UserDetails userDetails) {
+		try {
 		UserDetails dbObj = userDetailsRep.getById(userDetails.getEmail());
 		if(dbObj != null) {
 			dbObj.setPassword(userDetails.getPassword());
 			userDetailsRep.save(dbObj);
 			return true;
+		}
+		}
+		catch(Exception e) {
+			return false;
 		}
 		
 		return false;
