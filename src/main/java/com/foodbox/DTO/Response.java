@@ -6,12 +6,21 @@ public class Response {
 	
 	private boolean success;
 	private String code ;
+	private String email;
 	
 	public Response() {
 		super();
 
 	}
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public Response(boolean success, String code) {
 		super();
 		this.success = success;

@@ -50,6 +50,7 @@ public class UserDetailsController {
 		Response resp = new Response();
 		resp.setCode("100");
 		resp.setSuccess(false);
+		resp.setEmail(userDetails.getEmail());
 		Boolean flag = userDetailsService.validateUser(userDetails);
 		if(flag) {
 			resp.setSuccess(true);

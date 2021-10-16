@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
+import org.springframework.beans.factory.annotation.Value;
 
 @Entity
 public class Items {
@@ -21,6 +24,7 @@ public class Items {
 	private Integer price;
 	
 	private String enable ;
+	
 	
 
 
@@ -41,6 +45,9 @@ public class Items {
 		this.price = price;
 		this.enable = enable;
 	}
+
+
+
 
 
 
