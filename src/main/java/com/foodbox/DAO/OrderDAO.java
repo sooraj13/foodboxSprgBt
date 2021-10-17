@@ -74,4 +74,22 @@ public class OrderDAO {
 		return cartList;
 	}
 
+	public Response placeOrder(Response resp) {
+		resp.setSuccess(false);
+		resp.setCode("100");
+		try {
+			List<OrderDetails> ordDetlList =orderRep.findByEmailAndStatus(resp.getEmail(), "In Cart");
+			for(OrderDetails ordDetl : ordDetlList ) {
+				ordDetl.setStatus("Order Placed");
+				orderRep.save(ordDetl);
+			}
+		}
+		catch(Exception e) {
+			System.out.println("excep1:" + e);
+		}
+		resp.setSuccess(true);
+		resp.setCode("00");
+		return resp;
+	}
+
 }

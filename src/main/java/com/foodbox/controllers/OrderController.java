@@ -33,5 +33,14 @@ public class OrderController {
 		return orderService.getCartDtls(orderDetails);
 		
 	}
+	
+	@PostMapping("/placeOrder")
+	public Response placeOrder(@RequestBody Response resp) {
+		return orderService.placeOrder(resp);
+		
+	}
+	
+	
+	
 
 }

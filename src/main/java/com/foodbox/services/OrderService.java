@@ -25,4 +25,8 @@ public class OrderService {
 		return orderDAO.getCartDtls(orderDetails);
 	}
 
+	public Response placeOrder(Response resp) {
+		return orderDAO.placeOrder(resp);
+	}
+
 }
