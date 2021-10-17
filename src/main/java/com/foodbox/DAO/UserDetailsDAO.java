@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.foodbox.models.UserDetails;
 import com.foodbox.repositories.UserDetailsRep;
-import com.mysql.cj.xdevapi.DatabaseObject.DbObjectStatus;
+//import com.mysql.cj.xdevapi.DatabaseObject.DbObjectStatus;
 
 @Component
 @Transactional
