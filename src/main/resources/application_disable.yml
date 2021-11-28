@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: foodBoxSpBt
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/food_box  
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    
+    
+#To Enable And Expose Actuator endpoints
+management:
+  endpoint:
+    shutdown:
+      enabled: true #by Default all but /shutdown will be enables 
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #making all endpoints accessible 
+
+    
+    
+    
+    
+server:
+  port: 8081    

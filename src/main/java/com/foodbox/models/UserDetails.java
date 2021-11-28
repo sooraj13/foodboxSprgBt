@@ -3,10 +3,12 @@ package com.foodbox.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class UserDetails {
 	
-	
+	@ApiModelProperty(notes = "User Email Id",name="email",required=true,value="test email")
 	@Id
 	private String email;
 	

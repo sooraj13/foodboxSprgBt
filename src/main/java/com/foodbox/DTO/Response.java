@@ -1,9 +1,11 @@
 package com.foodbox.DTO;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class Response {
 	
 	
-	
+	@ApiModelProperty(notes = "Success flag ",name="success",required=true)
 	private boolean success;
 	private String code ;
 	private String email;

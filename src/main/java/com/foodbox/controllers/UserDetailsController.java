@@ -12,12 +12,24 @@ import com.foodbox.DTO.Response;
 import com.foodbox.models.UserDetails;
 import com.foodbox.services.UserDetailsService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
+@Api(value = "User login Page controller", description = "User login Page APIs")
 @RestController
 @RequestMapping("/user")
 public class UserDetailsController {
 	@Autowired
 	private UserDetailsService userDetailsService;
 
+	@ApiOperation(value="Register User" , response=Response.class)
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Success|OK"),
+			@ApiResponse(code = 401, message = "Not Authorized!"),
+			@ApiResponse(code = 403, message = "Forbidden!"),
+			@ApiResponse(code = 404, message = "Not Found!") })
 	
 	@PostMapping("/register")
 	@CrossOrigin
