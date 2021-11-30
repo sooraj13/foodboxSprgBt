@@ -1,16 +1,20 @@
 package com.foodbox.DTO;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
-public class Response {
+@Data
+public class JsonResponse {
 	
 	
 	@ApiModelProperty(notes = "Success flag ",name="success",required=true)
 	private boolean success;
+	
 	private String code ;
+	
 	private String email;
 	
-	public Response() {
+	public JsonResponse() {
 		super();
 
 	}
@@ -23,7 +27,7 @@ public class Response {
 		this.email = email;
 	}
 
-	public Response(boolean success, String code) {
+	public JsonResponse(boolean success, String code) {
 		super();
 		this.success = success;
 		this.code = code;

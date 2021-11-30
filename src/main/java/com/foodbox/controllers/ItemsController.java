@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.foodbox.DTO.ItemResp;
-import com.foodbox.DTO.Response;
+import com.foodbox.DTO.JsonResponse;
 import com.foodbox.models.Items;
 import com.foodbox.services.ItemService;
 
@@ -22,10 +22,10 @@ public class ItemsController {
 
 	@PostMapping("/addItem")
 	@CrossOrigin
-	public Response addItem(@RequestBody Items items) {
+	public JsonResponse addItem(@RequestBody Items items) {
 		System.out.println("1**********");
 		
-		Response resp = new Response();
+		JsonResponse resp = new JsonResponse();
 		resp.setSuccess(false);
 		resp.setCode("100");
 		boolean flag = itemService.addItem(items);
@@ -39,11 +39,11 @@ public class ItemsController {
 	
 	@PostMapping("/updateItem")
 	@CrossOrigin
-	public Response updateItem(@RequestBody Items items) {
+	public JsonResponse updateItem(@RequestBody Items items) {
 		System.out.println("1**********1");
 		System.out.println(items);
 		
-		Response resp = new Response();
+		JsonResponse resp = new JsonResponse();
 		resp.setSuccess(false);
 		resp.setCode("100");
 		boolean flag = itemService.updateItem(items);

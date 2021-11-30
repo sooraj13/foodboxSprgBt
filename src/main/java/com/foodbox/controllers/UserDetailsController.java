@@ -2,14 +2,14 @@ package com.foodbox.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.foodbox.DTO.Response;
-import com.foodbox.models.UserDetails;
+import com.foodbox.DTO.JsonResponse;
+import com.foodbox.DTO.UserDetailsDTO;
 import com.foodbox.services.UserDetailsService;
 
 import io.swagger.annotations.Api;
@@ -24,7 +24,7 @@ public class UserDetailsController {
 	@Autowired
 	private UserDetailsService userDetailsService;
 
-	@ApiOperation(value="Register User" , response=Response.class)
+	@ApiOperation(value="Register User" , response=JsonResponse.class)
 	@ApiResponses(value = {
 			@ApiResponse(code = 200, message = "Success|OK"),
 			@ApiResponse(code = 401, message = "Not Authorized!"),
@@ -33,9 +33,9 @@ public class UserDetailsController {
 	
 	@PostMapping("/register")
 	@CrossOrigin
-	public Response addUserDetails(@RequestBody UserDetails userDetails) {
+	public JsonResponse addUserDetails(@RequestBody UserDetailsDTO userDetails) {
 		
-		Response resp = new Response();
+		JsonResponse resp = new JsonResponse();
 		resp.setCode("100");
 		resp.setSuccess(false);
 		Boolean flag = userDetailsService.addUserDetails(userDetails);
@@ -46,20 +46,15 @@ public class UserDetailsController {
 		return resp;
 	}
 	
-	@GetMapping("/validate")
-	@CrossOrigin
-	public Response validateUser() {
-		Response resp = new Response();
-		resp.setCode("00");
-		resp.setSuccess(true);
-		return resp;
-		
-	}
+
+	
 	
 	@PostMapping("/validate")
 	@CrossOrigin
-	public Response validateUser(@RequestBody UserDetails userDetails) {
-		Response resp = new Response();
+	public JsonResponse validateUser(@RequestBody UserDetailsDTO userDetails) {
+		
+		
+		JsonResponse resp = new JsonResponse();
 		resp.setCode("100");
 		resp.setSuccess(false);
 		resp.setEmail(userDetails.getEmail());
@@ -74,11 +69,12 @@ public class UserDetailsController {
 	
 	@PostMapping("/frgtPswrd")
 	@CrossOrigin
-	public Response updatePassword(@RequestBody UserDetails userDetails) {
-		Response resp = new Response();
+	public JsonResponse updatePassword(@RequestBody UserDetailsDTO userDetails,@RequestHeader("Authorization") String token) {
+		
+		JsonResponse resp = new JsonResponse();
 		resp.setCode("100");
 		resp.setSuccess(false);
-		Boolean flag = userDetailsService.updatePassword(userDetails);
+		Boolean flag = userDetailsService.updatePassword(userDetails,token);
 		if(flag) {
 			resp.setSuccess(true);
 			resp.setCode("00");

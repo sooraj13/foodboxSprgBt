@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.foodbox.models.Items;
 
-public class ItemResp extends Response{
+import lombok.Data;
+@Data
+public class ItemResp extends JsonResponse{
 	
 	private List<Items> itemsList ;
 

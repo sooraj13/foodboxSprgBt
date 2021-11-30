@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.foodbox.DTO.CartResp;
-import com.foodbox.DTO.Response;
+import com.foodbox.DTO.JsonResponse;
 import com.foodbox.models.Items;
 import com.foodbox.models.OrderDetails;
 import com.foodbox.repositories.ItemRep;
@@ -25,10 +25,10 @@ public class OrderDAO {
 	@Autowired
 	private ItemRep itemRep;
 
-	public Response addToCart(OrderDetails orderDetails) {
+	public JsonResponse addToCart(OrderDetails orderDetails) {
 
 		System.out.println("11/111");
-		Response resp = new Response();
+		JsonResponse resp = new JsonResponse();
 		resp.setSuccess(false);
 		resp.setCode("100");
 		try {
@@ -74,7 +74,7 @@ public class OrderDAO {
 		return cartList;
 	}
 
-	public Response placeOrder(Response resp) {
+	public JsonResponse placeOrder(JsonResponse resp) {
 		resp.setSuccess(false);
 		resp.setCode("100");
 		try {

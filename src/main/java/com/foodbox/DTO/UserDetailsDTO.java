@@ -1,35 +1,20 @@
-package com.foodbox.models;
+package com.foodbox.DTO;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import io.swagger.annotations.ApiModelProperty;
+@Getter @Setter @NoArgsConstructor
+public class UserDetailsDTO extends JsonRequest{
 
-@Entity
-public class UserDetails {
-	
-	@ApiModelProperty(notes = "User Email Id",name="email",required=true,value="test email")
-	@Id
 	private String email;
-	
+
 	private String userName;
-	
+
 	private String phoneNr;
-	
+
+	//@JsonIgnore
 	private String password;
-	
-	
-	public UserDetails() {
-		super();
-	}
-	
-	public UserDetails(String email, String userName, String phoneNr, String password) {
-		super();
-		this.email = email;
-		this.userName = userName;
-		this.phoneNr = phoneNr;
-		this.password = password;
-	}
 
 	public String getEmail() {
 		return email;
@@ -62,7 +47,6 @@ public class UserDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 	
 	
 

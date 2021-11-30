@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.foodbox.DTO.CartResp;
-import com.foodbox.DTO.Response;
+import com.foodbox.DTO.JsonResponse;
 import com.foodbox.models.OrderDetails;
 import com.foodbox.services.OrderService;
 
@@ -23,7 +23,7 @@ public class OrderController {
 	private OrderService orderService;
 	
 	@PostMapping("/addToCart")
-	public Response addToCart(@RequestBody OrderDetails orderDetails) {
+	public JsonResponse addToCart(@RequestBody OrderDetails orderDetails) {
 		return orderService.addToCart(orderDetails);
 		
 	}
@@ -35,7 +35,7 @@ public class OrderController {
 	}
 	
 	@PostMapping("/placeOrder")
-	public Response placeOrder(@RequestBody Response resp) {
+	public JsonResponse placeOrder(@RequestBody JsonResponse resp) {
 		return orderService.placeOrder(resp);
 		
 	}

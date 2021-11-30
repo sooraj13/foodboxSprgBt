@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.foodbox.DAO.OrderDAO;
 import com.foodbox.DTO.CartResp;
-import com.foodbox.DTO.Response;
+import com.foodbox.DTO.JsonResponse;
 import com.foodbox.models.OrderDetails;
 
 @Service
@@ -16,7 +16,7 @@ public class OrderService {
 	@Autowired
 	private OrderDAO orderDAO;
 
-	public Response addToCart(OrderDetails orderDetails) {
+	public JsonResponse addToCart(OrderDetails orderDetails) {
 
 		return orderDAO.addToCart(orderDetails);
 	}
@@ -25,7 +25,7 @@ public class OrderService {
 		return orderDAO.getCartDtls(orderDetails);
 	}
 
-	public Response placeOrder(Response resp) {
+	public JsonResponse placeOrder(JsonResponse resp) {
 		return orderDAO.placeOrder(resp);
 	}
 

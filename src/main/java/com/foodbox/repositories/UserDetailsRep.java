@@ -6,13 +6,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.foodbox.models.UserDetails;
+import com.foodbox.models.UserDetail;
 
 @Repository
 @CrossOrigin
-public interface UserDetailsRep extends JpaRepository<UserDetails, String>{
+public interface UserDetailsRep extends JpaRepository<UserDetail, String>{
 
-	public UserDetails findByEmailAndPassword(String email, String password);
+	public UserDetail findByEmailAndPassword(String email, String password);
+	
+	public UserDetail findByEmail(String email);
 	
 	
 	/*
